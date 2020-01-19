@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Fragments</string>
+    <string name="fragment1">Select Fragment 1</string>
+    <string name="fragment2">Select Fragment 2</string>
+    <string name="text_fragment1"> </string>
+    <string name="text_fragment2"> </string>
+    <string name="host_activity_text">This is a host activity</string>
+    <string name="button_main_activity">Go!</string>
+    <string name="edit_text">Enter your message</string>
 </resources>
