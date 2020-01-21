@@ -12,24 +12,43 @@ import android.app.Fragment;
 
 
 public class Fragment1 extends Fragment {
+    private String message;
+    private final static String messageToFragment = "messageToFragment";
+    private final static String savedState = "savedState";
 
-    public Fragment1() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            message = savedInstanceState.getString(savedState);
+        }
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            message = bundle.getString(messageToFragment);
+
+        }
     }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment1, container, false);
+        return inflater.inflate(R.layout.fragment1, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         TextView text = view.findViewById(R.id.text_fragment1);
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            String message = bundle.getString("editText");
-            if (message != null) {
-                text.setText(message);
-            }
+        if (message != null) {
+            text.setText(message);
         }
-        return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(savedState, message);
     }
 }
