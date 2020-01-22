@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Fragment2 extends Fragment {
-    private String message =" ";
+    private String message = " ";
     private final static String MESSAGE_TO_FRAGMENT = "messageToFragment";
     private final static String SAVED_STATE = "savedState";
 
@@ -37,7 +37,7 @@ public class Fragment2 extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView text = view.findViewById(R.id.text_fragment2);
-            text.setText(message);
+        text.setText(message);
     }
 
     @Override
