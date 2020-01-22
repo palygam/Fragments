@@ -12,19 +12,18 @@ import android.app.Fragment;
 
 
 public class Fragment1 extends Fragment {
-    private String message;
-    private final static String messageToFragment = "messageToFragment";
-    private final static String savedState = "savedState";
+    private String message = " ";
+    private final static String MESSAGE_TO_FRAGMENT = "messageToFragment";
+    private final static String SAVED_STATE = "savedState";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-            message = savedInstanceState.getString(savedState);
+            message = savedInstanceState.getString(SAVED_STATE);
         }
-
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            message = bundle.getString(messageToFragment);
+            message = bundle.getString(MESSAGE_TO_FRAGMENT);
 
         }
     }
@@ -39,16 +38,13 @@ public class Fragment1 extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         TextView text = view.findViewById(R.id.text_fragment1);
-        if (message != null) {
             text.setText(message);
-        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(savedState, message);
+        outState.putString(SAVED_STATE, message);
     }
 }
